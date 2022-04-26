@@ -1,36 +1,26 @@
-package com.company;
+package com.company.maindemo;
 
-public class Lehrer {
+public class Student {
 
-    private int lehrerID;
+    private int studentID;
     private String TC;
     private String name;
     private String nachName;
     private String geschlect;
     private String adresse;
     private String geburtsDatum;
-    private String fachGebiet;
     private String unterrichtID;
 
 
-    public Lehrer() {
+    public Student() {
     }
 
-
-    public int getLehrerID() {
-        return lehrerID;
+    public int getStudentID() {
+        return studentID;
     }
 
-    public void setLehrerID(int lehrerID) {
-        this.lehrerID = lehrerID;
-    }
-
-    public String getTC() {
-        return TC;
-    }
-
-    public void setTC(String TC) {
-        this.TC = TC;
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
     }
 
     public String getName() {
@@ -73,19 +63,19 @@ public class Lehrer {
         this.geburtsDatum = geburtsDatum;
     }
 
-    public String getFachGebiet() {
-        return fachGebiet;
-    }
-
-    public void setFachGebiet(String fachGebiet) {
-        this.fachGebiet = fachGebiet;
-    }
-
     public String getUnterrichtID() {
         return unterrichtID;
     }
 
     public void setUnterrichtID(String unterrichtID) {
         this.unterrichtID = unterrichtID;
+    }
+
+    public String getTC() {
+        return TC;
+    }
+
+    public void setTC(String TC) {
+        this.TC = TC;
     }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.maindemo.studentController">
+   <children>
+      <Button fx:id="zurückButton" layoutX="374.0" layoutY="298.0" mnemonicParsing="false" onMouseClicked="#zurückButtonClicked" text="Zurück" />
+      <Text layoutX="314.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diese Seite wird nicht Entwickelt." textAlignment="CENTER" />
+      <Text layoutX="328.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Management Page" textAlignment="CENTER" />
+   </children>
+</AnchorPane>

@@ -10,6 +10,7 @@ module com.company.maindemo {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.sql;
 
     opens com.company.maindemo to javafx.fxml;
     exports com.company.maindemo;

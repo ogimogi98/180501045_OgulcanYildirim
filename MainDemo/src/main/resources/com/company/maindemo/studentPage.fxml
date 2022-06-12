@@ -1,13 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.maindemo.studentController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #f08375;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.maindemo.studentController">
    <children>
-      <Button fx:id="zurückButton" layoutX="374.0" layoutY="298.0" mnemonicParsing="false" onMouseClicked="#zurückButtonClicked" text="Zurück" />
-      <Text layoutX="314.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diese Seite wird nicht Entwickelt." textAlignment="CENTER" />
-      <Text layoutX="328.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Management Page" textAlignment="CENTER" />
+      <AnchorPane layoutX="-1.0" prefHeight="500.0" prefWidth="207.0" style="-fx-background-color: #4E586E; -fx-background-radius: 25;">
+         <children>
+            <Button layoutX="24.0" layoutY="171.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #f08375; -fx-background-radius: 100;" AnchorPane.topAnchor="170.0">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="24.0" layoutY="214.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #f08375; -fx-background-radius: 100;" text="Aktualisieren" AnchorPane.topAnchor="220.0">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="24.0" layoutY="262.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #f08375; -fx-background-radius: 100;" text="Löschen" AnchorPane.topAnchor="270.0" />
+            <Button layoutX="24.0" layoutY="305.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #f08375; -fx-background-radius: 100;" text="Auflisten" AnchorPane.topAnchor="320.0" />
+            <ImageView fitHeight="69.0" fitWidth="59.0" layoutX="83.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../java/com/company/maindemo/img/LOGO.png" />
+               </image>
+            </ImageView>
+            <Text fill="#f08375" layoutX="53.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" STUDENT  PAGE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="AnchorPaneAdminStudent" layoutX="206.0" prefHeight="500.0" prefWidth="595.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 25;" />
    </children>
 </AnchorPane>

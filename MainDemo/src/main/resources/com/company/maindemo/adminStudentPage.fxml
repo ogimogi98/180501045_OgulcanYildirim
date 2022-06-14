@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #f08375;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.maindemo.adminStudentPageController">
    <children>
       <AnchorPane layoutX="-1.0" prefHeight="500.0" prefWidth="207.0" style="-fx-background-color: #4E586E; -fx-background-radius: 25;">
          <children>
-            <Button layoutX="24.0" layoutY="171.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #f08375; -fx-background-radius: 100;" text="Hinzufügen" AnchorPane.topAnchor="170.0">
+            <Button fx:id="hinzufugenButton" layoutX="24.0" layoutY="171.0" mnemonicParsing="false" onMouseClicked="#hinzufugenClicked" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #f08375; -fx-background-radius: 100;" text="Hinzufügen" AnchorPane.topAnchor="170.0">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
@@ -41,6 +44,60 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="AnchorPaneAdminStudent" layoutX="206.0" prefHeight="500.0" prefWidth="595.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 25;" />
+      <AnchorPane fx:id="AnchorPaneAdminStudent" layoutX="206.0" prefHeight="500.0" prefWidth="595.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 25;">
+         <children>
+            <AnchorPane fx:id="hinzufugenAnchorPane" layoutX="14.0" layoutY="14.0" prefHeight="500.0" prefWidth="595.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TextField fx:id="ausweisIDTextF" layoutX="95.0" layoutY="62.0" prefHeight="16.0" prefWidth="149.0" />
+                  <TextField fx:id="nameTextF" layoutX="95.0" layoutY="102.0" prefHeight="16.0" prefWidth="149.0" />
+                  <TextField fx:id="nachnameTextF" layoutX="95.0" layoutY="143.0" prefHeight="16.0" prefWidth="149.0" />
+                  <TextField fx:id="handyTextF" layoutX="95.0" layoutY="264.0" prefHeight="16.0" prefWidth="149.0" />
+                  <DatePicker fx:id="geburtsDatumPick" layoutX="95.0" layoutY="224.0" prefHeight="25.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="geschlechtChoiceBox" layoutX="95.0" layoutY="183.0" prefWidth="150.0" />
+                  <Text layoutX="7.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ausweis ID" textAlignment="JUSTIFY" wrappingWidth="78.990234375" />
+                  <Text layoutX="7.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" textAlignment="JUSTIFY" wrappingWidth="78.990234375" />
+                  <Text layoutX="7.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nachname" wrappingWidth="78.990234375" />
+                  <Text layoutX="7.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Geschlecht" wrappingWidth="78.990234375" />
+                  <Text layoutX="7.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Geburtsdatum" wrappingWidth="78.990234375" />
+                  <Text layoutX="7.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-Mail Adresse" wrappingWidth="78.990234375" />
+                  <Text layoutX="281.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID" wrappingWidth="78.990234375" />
+                  <Text layoutX="281.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="78.990234375" />
+                  <TextField fx:id="adresseTextF" layoutX="95.0" layoutY="344.0" prefHeight="111.0" prefWidth="150.0" />
+                  <Text layoutX="7.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" wrappingWidth="78.990234375" />
+                  <TextField fx:id="studentIDTextF" layoutX="365.0" layoutY="62.0" prefHeight="25.0" prefWidth="203.0" promptText="Bitte Klicken Sie Generate" />
+                  <TextField fx:id="passwordTextF" layoutX="365.0" layoutY="102.0" prefHeight="25.0" prefWidth="203.0" promptText="Bitte Klicken Sie Generate" />
+                  <Button fx:id="generateButton" layoutX="365.0" layoutY="143.0" mnemonicParsing="false" onMouseClicked="#generateButtonClicked" style="-fx-background-color: #f08375; -fx-background-radius: 25;" text="Studenten ID &amp; Password Generate" textFill="#4e586e" />
+                  <Button fx:id="anmeldeButton" layoutX="392.0" layoutY="387.0" mnemonicParsing="false" style="-fx-background-color: #4E586E; -fx-background-radius: 25;" text="Hinzufügen &amp; Email Senden" textFill="WHITE" />
+                  <Label layoutX="52.0" text="Studenten Anmeldeformular">
+                     <font>
+                        <Font name="Arial Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="elternNameTextF" layoutX="392.0" layoutY="264.0" prefHeight="16.0" prefWidth="149.0" />
+                  <TextField fx:id="elternHandyTextF" layoutX="392.0" layoutY="305.0" prefHeight="16.0" prefWidth="149.0" />
+                  <TextField fx:id="elternartTextF" layoutX="392.0" layoutY="344.0" prefHeight="16.0" prefWidth="149.0" />
+                  <Text layoutX="264.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Handynummer" textAlignment="JUSTIFY" />
+                  <Text layoutX="264.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Verwandtschaftsgrad" />
+                  <Text layoutX="263.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name Nachname" textAlignment="JUSTIFY" wrappingWidth="94.990234375" />
+                  <Label layoutX="264.0" layoutY="226.0" text="Elterninformationen">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="emailTextF" layoutX="95.0" layoutY="305.0" prefHeight="16.0" prefWidth="149.0" />
+                  <Text layoutX="7.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Handynummer" textAlignment="JUSTIFY" />
+                  <Label fx:id="ınfoText" layoutX="274.0" layoutY="438.0" prefHeight="17.0" prefWidth="263.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ınfoGenerateText" layoutX="274.0" layoutY="187.0" prefHeight="17.0" prefWidth="263.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
    </children>
 </AnchorPane>

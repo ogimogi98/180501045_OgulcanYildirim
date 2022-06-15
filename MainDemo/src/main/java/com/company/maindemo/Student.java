@@ -1,5 +1,7 @@
 package com.company.maindemo;
 
+import java.sql.Date;
+
 public class Student {
 
     private int studentID;
@@ -8,11 +10,21 @@ public class Student {
     private String nachName;
     private String geschlect;
     private String adresse;
-    private String geburtsDatum;
+    private Date geburtsDatum;
     private String unterrichtID;
 
+    private String studentHandy;
 
-    public Student() {
+    private String elternName;
+
+    private String elternHandy;
+
+    private String elternTyp;
+
+    private String email;
+
+
+    public void Student(){
     }
 
     public int getStudentID() {
@@ -55,12 +67,12 @@ public class Student {
         this.adresse = adresse;
     }
 
-    public String getGeburtsDatum() {
+    public Date getGeburtsDatum() {
         return geburtsDatum;
     }
 
     public void setGeburtsDatum(String geburtsDatum) {
-        this.geburtsDatum = geburtsDatum;
+        this.geburtsDatum = Date.valueOf(geburtsDatum);
     }
 
     public String getUnterrichtID() {
@@ -78,4 +90,17 @@ public class Student {
     public void setTC(String TC) {
         this.TC = TC;
     }
-}
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+

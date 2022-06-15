@@ -9,7 +9,7 @@ import java.sql.*;
 
 
 public class HelloController{
-    Connection connection = null;
+
     PreparedStatement preparedStatement = null;
     ResultSet resultSet= null;
     String retrievetUser;
@@ -55,9 +55,9 @@ public class HelloController{
 
             System.out.println(x);
 
-            try{
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/180501045_ogulcan_yildirim","root", "Ogi.1234");
-                preparedStatement = connection.prepareStatement("select username, password from admin where username = ?");
+
+
+                preparedStatement = prMethods.connection.prepareStatement("select username, password from admin where username = ?");
                 preparedStatement.setString(1,ıdText.getText());
                 resultSet = preparedStatement.executeQuery();
 
@@ -87,20 +87,17 @@ public class HelloController{
                     }
                 }
 
-            } catch (SQLException e){
-
-                e.printStackTrace();
-            }
 
 
-            x = 3;
-        }
+
+            x = 3;}
+
         else if (x==1) {
 
-            try{
 
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/180501045_ogulcan_yildirim","root", "Ogi.1234");
-                preparedStatement = connection.prepareStatement("select studentID, password from student where studentID = ?");
+
+
+                preparedStatement = prMethods.connection.prepareStatement("select studentID, password from student where studentID = ?");
                 preparedStatement.setString(1,ıdText.getText());
                 resultSet = preparedStatement.executeQuery();
 
@@ -127,10 +124,7 @@ public class HelloController{
                     }
                 }
 
-            } catch (SQLException e){
 
-                e.printStackTrace();
-            }
 
             x = 3;
 
@@ -139,10 +133,8 @@ public class HelloController{
 
         else if (x==2) {
 
-            try{
 
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/180501045_ogulcan_yildirim","root", "Ogi.1234");
-                preparedStatement = connection.prepareStatement("select LehrerID , password from lehrer where LehrerID = ?");
+                preparedStatement = prMethods.connection.prepareStatement("select LehrerID , password from lehrer where LehrerID = ?");
                 preparedStatement.setString(1,ıdText.getText());
 
                 if (ıdText.getText().isBlank()){
@@ -171,11 +163,6 @@ public class HelloController{
 
                     }
                 }
-
-            } catch (SQLException e){
-
-                e.printStackTrace();
-            }
 
             x = 3;
         }

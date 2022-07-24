@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #f08375;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.maindemo.adminStudentPageController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #f08375;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.maindemo.adminLehrerPageController">
    <children>
       <AnchorPane layoutX="-1.0" prefHeight="500.0" prefWidth="207.0" style="-fx-background-color: #4E586E;">
          <children>
@@ -36,7 +36,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <Text fill="#f08375" layoutX="9.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" STUDENT MANAGEMENT PAGE">
+            <Text fill="#f08375" layoutX="9.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" LEHRER MANAGEMENT PAGE">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
@@ -46,7 +46,7 @@
       </AnchorPane>
       <AnchorPane fx:id="AnchorPaneAdminStudent" layoutX="206.0" prefHeight="500.0" prefWidth="595.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 25;">
          <children>
-            <AnchorPane fx:id="hinzufugenAnchorPane" layoutX="14.0" layoutY="14.0" prefHeight="500.0" prefWidth="595.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="hinzufugenAnchorPane" layoutX="14.0" layoutY="14.0" prefHeight="500.0" prefWidth="595.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <TextField fx:id="ausweisIDTextF" layoutX="95.0" layoutY="62.0" prefHeight="16.0" prefWidth="149.0" />
                   <TextField fx:id="nameTextF" layoutX="95.0" layoutY="102.0" prefHeight="16.0" prefWidth="149.0" />
@@ -60,26 +60,25 @@
                   <Text layoutX="7.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Geschlecht" wrappingWidth="78.990234375" />
                   <Text layoutX="7.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Geburtsdatum" wrappingWidth="78.990234375" />
                   <Text layoutX="7.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-Mail Adresse" wrappingWidth="78.990234375" />
-                  <Text layoutX="281.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID" wrappingWidth="78.990234375" />
+                  <Text layoutX="281.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrer ID" wrappingWidth="78.990234375" />
                   <Text layoutX="281.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="78.990234375" />
                   <TextField fx:id="adresseTextF" layoutX="95.0" layoutY="344.0" prefHeight="111.0" prefWidth="150.0" />
                   <Text layoutX="7.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" wrappingWidth="78.990234375" />
-                  <TextField fx:id="studentIDTextF" layoutX="365.0" layoutY="62.0" prefHeight="25.0" prefWidth="203.0" promptText="Bitte Klicken Sie Generate" />
+                  <TextField fx:id="lehrerIDTextF" layoutX="365.0" layoutY="62.0" prefHeight="25.0" prefWidth="203.0" promptText="Bitte Klicken Sie Generate" />
                   <TextField fx:id="passwordTextF" layoutX="365.0" layoutY="102.0" prefHeight="25.0" prefWidth="203.0" promptText="Bitte Klicken Sie Generate" />
-                  <Button fx:id="generateButton" layoutX="365.0" layoutY="143.0" mnemonicParsing="false" onMouseClicked="#generateButtonClicked" style="-fx-background-color: #f08375; -fx-background-radius: 25;" text="Studenten ID &amp; Password Generate" textFill="#4e586e" />
+                  <Button fx:id="generateButton" layoutX="386.0" layoutY="143.0" mnemonicParsing="false" onMouseClicked="#generateButtonClicked" style="-fx-background-color: #f08375; -fx-background-radius: 25;" text="Lehrer ID &amp; Password Generate" textFill="#4e586e" />
                   <Button fx:id="anmeldeButton" layoutX="263.0" layoutY="387.0" mnemonicParsing="false" onMouseClicked="#anmeldeButtonClicked" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #4E586E; -fx-background-radius: 25;" text="Hinzufügen" textFill="WHITE" />
-                  <Label layoutX="52.0" text="Studenten Anmeldeformular">
+                  <Label layoutX="52.0" text="Lehrerinnen Anmeldeformular">
                      <font>
                         <Font name="Arial Bold" size="36.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="elternNameTextF" layoutX="392.0" layoutY="264.0" prefHeight="16.0" prefWidth="149.0" />
-                  <TextField fx:id="elternHandyTextF" layoutX="392.0" layoutY="305.0" prefHeight="16.0" prefWidth="149.0" />
-                  <TextField fx:id="elternartTextF" layoutX="392.0" layoutY="344.0" prefHeight="16.0" prefWidth="149.0" />
-                  <Text layoutX="264.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Handynummer" textAlignment="JUSTIFY" />
-                  <Text layoutX="264.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Verwandtschaftsgrad" />
-                  <Text layoutX="263.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name Nachname" textAlignment="JUSTIFY" wrappingWidth="94.990234375" />
-                  <Label layoutX="264.0" layoutY="226.0" text="Elterninformationen">
+                  <TextField fx:id="fachgebietTextF" layoutX="392.0" layoutY="305.0" prefHeight="16.0" prefWidth="149.0" />
+                  <TextField fx:id="kapazitatTextF" layoutX="392.0" layoutY="344.0" prefHeight="16.0" prefWidth="149.0" />
+                  <Text layoutX="264.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fachgebiet" textAlignment="JUSTIFY" />
+                  <Text layoutX="264.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kapazität von Fach" />
+                  <Text layoutX="259.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Abkürzung von Fach" textAlignment="JUSTIFY" wrappingWidth="109.990234375" />
+                  <Label layoutX="264.0" layoutY="226.0" prefHeight="21.0" prefWidth="180.0" text="Fach Informationen">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -92,7 +91,8 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="sucheButton" layoutX="365.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#sucheButtonClicked" prefHeight="25.0" prefWidth="204.0" style="-fx-background-radius: 25; -fx-background-color: #4E586E;" text="Studenten Suche mit Student ID" textFill="WHITE" />
+                  <Button fx:id="sucheButton" layoutX="386.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#sucheButtonClicked" prefHeight="25.0" prefWidth="182.0" style="-fx-background-radius: 25; -fx-background-color: #4E586E;" text="Lehrer Suche mit Lehrer ID" textFill="WHITE" />
+                  <ChoiceBox fx:id="abkurzungChoicebox" layoutX="392.0" layoutY="264.0" prefWidth="150.0" />
                </children>
             </AnchorPane>
             <SplitPane fx:id="auflistenSplitPane" dividerPositions="0.1" focusTraversable="false" layoutX="14.0" layoutY="14.0" orientation="VERTICAL" prefHeight="470.0" prefWidth="560.0" style="-fx-background-radius: 25;" visible="false">
@@ -100,27 +100,27 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="88.0" prefWidth="559.0">
                      <children>
                         <Button fx:id="listenButton" layoutX="475.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#listenButtonClicked" style="-fx-background-radius: 25;" text="AUFLISTEN" />
-                        <ChoiceBox fx:id="geschlectlistenChoicebox" layoutX="14.0" layoutY="10.0" prefHeight="25.0" prefWidth="125.0" style="-fx-background-radius: 25;" />
-                        <CheckBox fx:id="elternCheckBox" layoutX="149.0" layoutY="14.0" mnemonicParsing="false" text="Eltern Informationen" />
+                        <ChoiceBox fx:id="fachChoicebox" layoutX="14.0" layoutY="10.0" prefHeight="25.0" prefWidth="125.0" style="-fx-background-radius: 25;" />
+                        <CheckBox fx:id="fachCheckBox" layoutX="149.0" layoutY="14.0" mnemonicParsing="false" text="Fach Informationen" />
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-radius: 25;">
                      <children>
-                        <TableView fx:id="studentTableview" prefHeight="425.0" prefWidth="558.0" style="-fx-background-radius: 25;">
+                        <TableView fx:id="lehrerTableview" prefHeight="425.0" prefWidth="558.0" style="-fx-background-radius: 25;">
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                            <columns>
-                              <TableColumn fx:id="col_stdID" editable="false" prefWidth="75.0" text="Student ID" />
+                              <TableColumn fx:id="col_lehrerID" editable="false" prefWidth="75.0" text="Lehrer ID" />
                               <TableColumn fx:id="col_TC" editable="false" prefWidth="69.0" text="TC" />
                               <TableColumn fx:id="col_name" editable="false" prefWidth="90.0" text="Name" />
                               <TableColumn fx:id="col_nachname" editable="false" prefWidth="75.0" text="Nachname" />
                               <TableColumn fx:id="col_email" editable="false" prefWidth="75.0" sortable="false" text="E-mail" />
                               <TableColumn fx:id="col_handy" editable="false" prefWidth="63.0" sortable="false" text="Handy" />
-                              <TableColumn fx:id="col_elternınfo" editable="false" prefWidth="96.0" sortable="false" text="Eltern Informationen" visible="false">
+                              <TableColumn fx:id="col_fachınfo" editable="false" prefWidth="96.0" sortable="false" text="Fach Informationen" visible="false">
                                  <columns>
-                                    <TableColumn fx:id="col_elternname" editable="false" prefWidth="75.0" sortable="false" text="Name" />
-                                    <TableColumn fx:id="col_elternhandy" editable="false" prefWidth="75.0" sortable="false" text="Nummer" />
+                                    <TableColumn fx:id="col_abkurzung" editable="false" prefWidth="75.0" sortable="false" text="Abkürzung" />
+                                    <TableColumn fx:id="col_fachgebiet" editable="false" prefWidth="75.0" sortable="false" text="Fachgebiet" />
                                  </columns>
                               </TableColumn>
                            </columns>
@@ -129,7 +129,6 @@
                   </AnchorPane>
               </items>
             </SplitPane>
-         </children>
-      </AnchorPane>
+         </children></AnchorPane>
    </children>
 </AnchorPane>

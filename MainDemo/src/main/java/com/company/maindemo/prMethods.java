@@ -156,6 +156,30 @@ public class prMethods {
 
     }
 
+    public static void insertLehrer(
+            String lehrerID, String password, String TC, String Name,String Nachname, String geschlect ,String Adresse, String geburtsDatum, String lehrerHandy, String Fachgebiet, String UnterrichtID,String email
+    ) throws SQLException {
+
+
+        String insertData = "INSERT INTO lehrer (`LehrerID`,`password`,`TC`,`Name`,`Nachname`,`geschlect`,`Adresse`,`geburtsDatum`,`lehrerHandy`,`Fachgebiet`,`UnterrichtID`,`email`)"+"VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+        PreparedStatement pstmt = prMethods.connection.prepareStatement(insertData);
+        pstmt.setString(1,lehrerID);
+        pstmt.setString(2,password);
+        pstmt.setString(3,TC);
+        pstmt.setString(4,Name);
+        pstmt.setString(5,Nachname);
+        pstmt.setString(6,geschlect);
+        pstmt.setString(7,Adresse);
+        pstmt.setString(8,geburtsDatum);
+        pstmt.setString(9,lehrerHandy);
+        pstmt.setString(10,Fachgebiet);
+        pstmt.setString(11,UnterrichtID);
+        pstmt.setString(12,email);
+        pstmt.executeUpdate();
+
+
+    }
+
     public static boolean kontrolleID(String ID, String Name, String Nachname, String Table, String IDart) throws SQLException{
 
         String SQL = "SELECT "+IDart+", Name, Nachname from "+Table+" where "+ IDart +" = ?";
@@ -183,7 +207,124 @@ public class prMethods {
         return true;
     }
 
+    public static void updateStudent(Student student) throws SQLException {
+
+        String query = "UPDATE student SET `studentID` = ? ,`password` = ?,`TC` = ?, `Name` = ? ,`Nachname` = ?, `geschlect` = ?, `studentHandy` = ?,`email` = ?, `Adresse` = ?,`geburtsDatum` = ?," +
+                "`elternName` = ?,`elternHandy` = ?,`elternTyp` = ?  " +
+                "WHERE `studentID` = ?";
+        PreparedStatement preparedStatement = prMethods.connection.prepareStatement(query);
+        preparedStatement.setString(1,student.getStudentID());
+        preparedStatement.setString(2,student.getPassword());
+        preparedStatement.setString(3,student.getTC());
+        preparedStatement.setString(4,student.getName());
+        preparedStatement.setString(5,student.getNachName());
+        preparedStatement.setString(6,student.getGeschlect());
+        preparedStatement.setString(7,student.getStudentHandy());
+        preparedStatement.setString(8,student.getEmail());
+        preparedStatement.setString(9,student.getAdresse());
+        String date = student.getGeburtsDatum().toString();
+        preparedStatement.setString(10,date);
+        preparedStatement.setString(11,student.getElternName());
+        preparedStatement.setString(12,student.getElternTyp());
+        preparedStatement.setString(13,student.getElternHandy());
+        preparedStatement.setString(14,student.getStudentID());
+        String query2 = preparedStatement.toString();
+        System.out.println(query);
+        System.out.println(query2);
+        preparedStatement.executeUpdate();
+        System.out.println("ÖĞRENCİ GÜNCELLENDİ.");
+
+
+
+
     }
+    public static void updateLehrer (Lehrer lehrer) throws SQLException {
+
+        String query = "UPDATE student SET `LehrerID` = ? ,`password` = ?,`TC` = ?, `Name` = ? ,`Nachname` = ?, " +
+                "`geschlect` = ?, `lehrerHandy` = ?,`email` = ?, `Adresse` = ?,`geburtsDatum` = ?," +
+                "`UnterrichtID` = ?,`Fachgebiet` = ?  " +
+                "WHERE `lehrerID` = ?";
+        PreparedStatement preparedStatement = prMethods.connection.prepareStatement(query);
+        preparedStatement.setString(1,lehrer.getLehrerID());
+        preparedStatement.setString(2,lehrer.getLehrerpassword());
+        preparedStatement.setString(3,lehrer.getTC());
+        preparedStatement.setString(4,lehrer.getLehrerName());
+        preparedStatement.setString(5,lehrer.getLehrernachName());
+        preparedStatement.setString(6,lehrer.getGeschlect());
+        preparedStatement.setString(7,lehrer.getLehrerHandy());
+        preparedStatement.setString(8,lehrer.getLehrerEmail());
+        preparedStatement.setString(9,lehrer.getAdresse());
+        String date = lehrer.getGeburtsDatum().toString();
+        preparedStatement.setString(10,date);
+        preparedStatement.setString(11,lehrer.getUnterrichtID());
+        preparedStatement.setString(12,lehrer.getFachGebiet());
+        preparedStatement.setString(13,lehrer.getLehrerID());
+        String query2 = preparedStatement.toString();
+        System.out.println(query);
+        System.out.println(query2);
+        preparedStatement.executeUpdate();
+        System.out.println("ÖĞRETMEN GÜNCELLENDİ.");
+
+
+
+
+    }
+    public static ResultSet findStudent(String username) throws SQLException{
+
+    PreparedStatement preparedStatement = prMethods.connection.prepareStatement("select * from student where studentID = ?");
+    preparedStatement.setString(1,username);
+    ResultSet resultSet = preparedStatement.executeQuery();
+
+        return resultSet;
+    }
+    public static ResultSet findTeacher(String lehrerID)throws SQLException{
+
+        String query = "Select *  from lehrer where lehrerID= '"+lehrerID+"'";
+        System.out.println(query);
+        PreparedStatement preparedStatement = prMethods.connection.prepareStatement(query);
+        ResultSet rs = preparedStatement.executeQuery();
+        return rs;
+    }
+
+    public static void deleteStudent(String studentID) throws SQLException {
+        String query = "DELETE FROM student WHERE  studentID = '"+studentID+"'";
+        System.out.println(query);
+        PreparedStatement preparedStatement = prMethods.connection.prepareStatement(query);
+        preparedStatement.executeUpdate();
+
+    }
+    public static void deleteTeacher(String teacherID) throws SQLException {
+        String query = "DELETE FROM lehrer WHERE  lehrerID = '"+teacherID+"'";
+        System.out.println(query);
+        PreparedStatement preparedStatement = prMethods.connection.prepareStatement(query);
+        preparedStatement.executeUpdate();
+
+    }
+
+    public static ResultSet listTeacher(String fachgebiet) throws SQLException{
+
+        String query = "Select LehrerID, TC, Name, Nachname, email, lehrerHandy, UnterrichtID, Fachgebiet   from lehrer"+fachgebiet+" ORDER BY LehrerID DESC";
+        System.out.println(query);
+        PreparedStatement preparedStatement = prMethods.connection.prepareStatement(query);
+        ResultSet rs = preparedStatement.executeQuery();
+        return  rs;
+
+    }
+    public static  ResultSet selectUnterricht()throws SQLException{
+        String query = "Select * from unterricht";
+        PreparedStatement preparedStatement = prMethods.connection.prepareStatement(query);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        return resultSet;
+    }
+    public static  ResultSet selectUnterrichtWhere(String abkurzung) throws SQLException{
+
+        String query = "Select * from unterricht where = '"+abkurzung+"'";
+        PreparedStatement preparedStatement = prMethods.connection.prepareStatement(query);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        return resultSet;
+
+    }
+}
 
 
 

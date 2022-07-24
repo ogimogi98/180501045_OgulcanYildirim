@@ -1,11 +1,16 @@
 package com.company.maindemo;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 
 public class HelloController{
@@ -113,7 +118,19 @@ public class HelloController{
                     retrievedPass = resultSet.getString("password");
 
                     if (retrievetUser.equals(ıdText.getText()) && retrievedPass.equals(passText.getText()) ){
-                        prMethods.changeScene("studentPage.fxml",loginButton);
+
+                        String username = ıdText.getText();
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("studentPage.fxml"));
+                        Parent root = loader.load();
+                        studentController StudentController = loader.getController();
+                        StudentController.helloMessage(username);
+
+                        Stage window = (Stage) loginButton.getScene().getWindow();
+                        Scene scene = new Scene(root);
+                        window.setScene(scene);
+                        window.show();
+
+
 
                     }
                     else   {

@@ -11,6 +11,8 @@ public class adminPageController {
     Button outLogo;
     @FXML
     Button studentButton;
+    @FXML
+    Button lehrerButton;
 
     @FXML
     protected void studentClicked() throws IOException {
@@ -18,11 +20,11 @@ public class adminPageController {
         prMethods.changeScene("adminStudentPage.fxml",studentButton);
 
     }
+    @FXML
+    protected void lehrerButtonClicked() throws IOException {
 
-    protected void lehrerClicked(){
 
-
-
+        prMethods.changeScene("adminTeacherPage.fxml",lehrerButton);
 
     }
     protected void unterrichtClicked(){

@@ -4,8 +4,9 @@ import java.sql.Date;
 
 public class Student {
 
-    private int studentID;
+    private String studentID;
     private String TC;
+    private String password;
     private String name;
     private String nachName;
     private String geschlect;
@@ -15,23 +16,48 @@ public class Student {
 
     private String studentHandy;
 
-    private String elternName;
+    private  String elternName;
 
-    private String elternHandy;
+    private  String elternHandy;
 
-    private String elternTyp;
+    private  String elternTyp;
 
-    private String email;
+    private  String email;
 
 
-    public void Student(){
+
+    public  Student(String studentID,String password ,String tc, String name, String nachname, String email, String handy, String Eltern, String Enummer,String Elterntyp ,Date geburtsDatum, String adresse, String geschlect,String unterrichtID) {
+
+        this.studentID=studentID;
+        this.password = password;
+        this.TC=tc;
+        this.name=name;
+        this.nachName=nachname;
+        this.email = email;
+        this.studentHandy = handy;
+        this.elternName = Eltern;
+        this.elternHandy = Enummer;
+        this.elternTyp = Elterntyp;
+        this.geburtsDatum = geburtsDatum;
+        this.adresse=adresse;
+        this.geschlect = geschlect;
+        this.unterrichtID = unterrichtID;
+
+
     }
 
-    public int getStudentID() {
+
+
+
+
+
+
+
+    public String getStudentID() {
         return studentID;
     }
 
-    public void setStudentID(int studentID) {
+    public void setStudentID(String studentID) {
         this.studentID = studentID;
     }
 
@@ -72,7 +98,7 @@ public class Student {
     }
 
     public void setGeburtsDatum(String geburtsDatum) {
-        this.geburtsDatum = Date.valueOf(geburtsDatum);
+        this.setGeburtsDatum(Date.valueOf(geburtsDatum));
     }
 
     public String getUnterrichtID() {
@@ -92,15 +118,57 @@ public class Student {
     }
 
 
-
-
-
-
-
-
-
-
-
+    public String getStudentHandy() {
+        return studentHandy;
     }
+
+    public String getElternName() {
+        return elternName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getElternHandy() {
+        return elternHandy;
+    }
+
+    public void setElternHandy(String elternHandy) {
+        this.elternHandy = elternHandy;
+    }
+
+    public void setGeburtsDatum(Date geburtsDatum) {
+        this.geburtsDatum = geburtsDatum;
+    }
+
+    public void setStudentHandy(String studentHandy) {
+        this.studentHandy = studentHandy;
+    }
+
+    public void setElternName(String elternName) {
+        this.elternName = elternName;
+    }
+
+    public String getElternTyp() {
+        return elternTyp;
+    }
+
+    public void setElternTyp(String elternTyp) {
+        this.elternTyp = elternTyp;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
 
 

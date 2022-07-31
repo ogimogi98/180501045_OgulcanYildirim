@@ -3,15 +3,19 @@ package com.company.maindemo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
+import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 
-public class adminLehrerPageController {
+public class adminLehrerPageController implements Initializable {
 
     @FXML
     TableView<Lehrer> lehrerTableview;
@@ -46,6 +50,7 @@ public class adminLehrerPageController {
     TextField fachgebietTextF;
     @FXML
     ChoiceBox abkurzungChoicebox;
+
     @FXML
     TextField kapazitatTextF;
     @FXML
@@ -74,12 +79,21 @@ public class adminLehrerPageController {
     ObservableList<String> unterrichtabkurzung = FXCollections.observableArrayList();
     ObservableList<Lehrer> oblist = FXCollections.observableArrayList();
 
-    private void adminLehrerPageController() throws SQLException{
+    public void fillCombo(){
 
-
-
+        try {
+            ResultSet rs = prMethods.selectUnterricht();
+            while (rs.next()){
+                unterrichtabkurzung.add(rs.getString(1));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
+
+
+
 
 
 
@@ -88,7 +102,10 @@ public class adminLehrerPageController {
     protected void hinzufugenClicked() throws Exception{
 
         geschlechtChoiceBox.setItems(geschlectArten);
-        System.out.println(unterrichtabkurzung.size());
+        unterrichtabkurzung.clear();
+        System.out.println("Önce: "+unterrichtabkurzung.size());
+        fillCombo();
+        System.out.println("Sonra: "+unterrichtabkurzung.size());
         abkurzungChoicebox.setItems(unterrichtabkurzung);
         auflistenSplitPane.setVisible(false);
 
@@ -157,14 +174,18 @@ public class adminLehrerPageController {
                 String date = String.valueOf(geburtsDatumPick.getValue());
                 prMethods.insertLehrer(lehrerIDTextF.getText(), passwordTextF.getText(), ausweisIDTextF.getText(), nameTextF.getText(), nachnameTextF.getText(), geschlechtChoiceBox.getValue().toString(), adresseTextF.getText(),
                         date, handyTextF.getText(), fachgebietTextF.getText(), String.valueOf(abkurzungChoicebox.getValue()), emailTextF.getText());
-                infoTextArea.setText(nameTextF +"mit Lehrer ID"+lehrerIDTextF.getText() + "wird angemeldet.");
+                infoTextArea.setText(nameTextF.getText() +" mit Lehrer ID "+lehrerIDTextF.getText() + " wird angemeldet.");
             }
         }
 
     }
 
     @FXML protected void auflistenButtonClicked(){
-
+        System.out.println(unterrichtabkurzung.size());
+        unterrichtabkurzung.clear();
+        System.out.println(unterrichtabkurzung.size());
+        fillCombo();
+        System.out.println(unterrichtabkurzung.size());
         unterrichtabkurzung.add("Alles");
         System.out.println(unterrichtabkurzung.size());
         fachChoicebox.setItems(unterrichtabkurzung);
@@ -193,6 +214,7 @@ public class adminLehrerPageController {
     @FXML protected void listenButtonClicked() throws SQLException {
 
         oblist.clear();
+
         String fachgebiet = fachChoicebox.getValue().toString();
 
         System.out.println(fachgebiet);
@@ -202,7 +224,7 @@ public class adminLehrerPageController {
         } else {
             String bolum;
             bolum = fachChoicebox.getValue().toString();
-            fachgebiet = " where geschlect = "+"'"+bolum+"'";
+            fachgebiet = " where UnterrichtID = "+"'"+bolum+"'";
             System.out.println(fachgebiet + " seçildi");
         }
 
@@ -222,12 +244,12 @@ public class adminLehrerPageController {
 
         col_lehrerID.setCellValueFactory(new PropertyValueFactory<Lehrer,String>("lehrerID"));
         col_TC.setCellValueFactory(new PropertyValueFactory<Lehrer,String>("TC"));
-        col_name.setCellValueFactory(new PropertyValueFactory<Lehrer,String>("name"));
-        col_nachname.setCellValueFactory(new PropertyValueFactory<Lehrer,String>("Nachname"));
-        col_email.setCellValueFactory(new PropertyValueFactory<Lehrer,String>("email"));
+        col_name.setCellValueFactory(new PropertyValueFactory<Lehrer,String>("lehrerName"));
+        col_nachname.setCellValueFactory(new PropertyValueFactory<Lehrer,String>("lehrernachName"));
+        col_email.setCellValueFactory(new PropertyValueFactory<Lehrer,String>("lehrerEmail"));
         col_handy.setCellValueFactory(new PropertyValueFactory<Lehrer,String>("lehrerHandy"));
         col_abkurzung.setCellValueFactory(new PropertyValueFactory<Lehrer,String>("UnterrichtID"));
-        col_fachgebiet.setCellValueFactory(new PropertyValueFactory<Lehrer,String>("Fachgebiet"));
+        col_fachgebiet.setCellValueFactory(new PropertyValueFactory<Lehrer,String>("fachGebiet"));
 
         if (fachCheckBox.isSelected()){
 
@@ -255,6 +277,7 @@ public class adminLehrerPageController {
 
         ResultSet rs = prMethods.findTeacher(lehrerIDTextF.getText());
 
+
         if (!rs.isBeforeFirst()){
 
             infoTextArea.setText("Lehrer wird nicht gefunden.");
@@ -273,12 +296,13 @@ public class adminLehrerPageController {
             nachnameTextF.setText(rs.getString("Nachname"));
             adresseTextF.setText(rs.getString("Adresse"));
             handyTextF.setText(rs.getString("lehrerHandy"));
-            fachgebietTextF.setText(rs.getString("Fachgebiet"));
-
-            abkurzungChoicebox.setValue(rs.getObject("UnterrichtID"));
-            emailTextF.setText(rs.getString("email"));
             geschlechtChoiceBox.setValue(rs.getObject("geschlect"));
+            emailTextF.setText(rs.getString("email"));
+            fachgebietTextF.setText(rs.getString("Fachgebiet"));
             geburtsDatumPick.setValue(rs.getDate("geburtsDatum").toLocalDate());
+            abkurzungChoicebox.getSelectionModel().select(rs.getObject("UnterrichtID"));
+
+
             rs.close();
         }
 
@@ -313,14 +337,49 @@ public class adminLehrerPageController {
     @FXML protected void aktualisierenButtonClicked() throws SQLException{
 
 
-        /*Student aktualisierteStudent = new Student(lehrerIDTextF.getText(), passwordTextF.getText(), ausweisIDTextF.getText(), nameTextF.getText(),
-                nachnameTextF.getText(), emailTextF.getText(), handyTextF.getText(), elternNameTextF.getText(), elternHandyTextF.getText(), elternartTextF.getText(),
-                java.sql.Date.valueOf(geburtsDatumPick.getValue()), adresseTextF.getText(),geschlectlistenChoicebox.getValue().toString(),null );
+        Lehrer aktualisierteLehrer = new Lehrer(lehrerIDTextF.getText(), passwordTextF.getText(), ausweisIDTextF.getText(), nameTextF.getText(),
+                nachnameTextF.getText(),geschlechtChoiceBox.getValue().toString(), adresseTextF.getText(),java.sql.Date.valueOf(geburtsDatumPick.getValue()),
+                 handyTextF.getText(), fachgebietTextF.getText(),abkurzungChoicebox.getValue().toString(), emailTextF.getText());
 
-        prMethods.updateStudent(aktualisierteStudent);*/
+        prMethods.updateLehrer(aktualisierteLehrer);
+
+        infoTextArea.setText("Lehrer Aktualisiert.");
+        System.out.println("lehrer Aktualisiert");
 
 
 
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        abkurzungChoicebox.setOnAction(Action -> {
+
+            String abkurzung = abkurzungChoicebox.getSelectionModel().getSelectedItem().toString();
+            try {
+                ResultSet rs = prMethods.selectUnterrichtWhere(abkurzung);
+                while (rs.next()){
+
+                    fachgebietTextF.setText(rs.getString("fachgebiet"));
+                    kapazitatTextF.setText(rs.getString("Unterricht_info"));
+
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+
+        });
+    }
+    @FXML
+    Button outLogo;
+    @FXML
+    protected void logoutLogoClicked() throws IOException {
+
+        System.out.println("logo Clicked");
+
+        prMethods.changeScene("adminPage.fxml",outLogo);
 
     }
 }

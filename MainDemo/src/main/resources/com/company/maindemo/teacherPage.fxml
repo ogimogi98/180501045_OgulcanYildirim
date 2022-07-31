@@ -1,13 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.maindemo.teacherController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #f08375;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.maindemo.teacherController">
    <children>
-      <Button fx:id="zurückButton" layoutX="374.0" layoutY="298.0" mnemonicParsing="false" onMouseClicked="#zurückButtonClicked" text="Zurück" />
-      <Text layoutX="314.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diese Seite wird nicht Entwickelt." textAlignment="CENTER" />
-      <Text layoutX="328.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Teacher Management Page" textAlignment="CENTER" />
+      <AnchorPane layoutX="-1.0" prefHeight="500.0" prefWidth="207.0" style="-fx-background-color: #4E586E;">
+         <children>
+            <Button fx:id="studentInfoButton" layoutX="24.0" layoutY="150.0" mnemonicParsing="false" onMouseClicked="#InfoButtonClicked" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #f08375; -fx-background-radius: 100;" text="Info Aktualisieren" AnchorPane.topAnchor="150.0">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="studentHausaufgabeButton" layoutX="24.0" layoutY="175.0" mnemonicParsing="false" onMouseClicked="#HausaufgabeButtonClicked" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #f08375; -fx-background-radius: 100;" text="Hausaufgaben" AnchorPane.topAnchor="200.0">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="StudListButton" layoutX="24.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#StudListButtonClicked" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #f08375; -fx-background-radius: 100;" text="Studenten Listen" AnchorPane.topAnchor="250.0" />
+            <ImageView fitHeight="69.0" fitWidth="59.0" layoutX="83.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../java/com/company/maindemo/img/LOGO.png" />
+               </image>
+            </ImageView>
+            <Text fill="#f08375" layoutX="53.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LEHRER  PAGE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Text>
+            <TextArea fx:id="infoTextArea" layoutX="24.0" layoutY="296.0" prefHeight="69.0" prefWidth="159.0" />
+            <Text fx:id="stdID" fill="WHITE" layoutX="55.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="100.67578125">
+               <font>
+                  <Font name="Arial Bold" size="31.0" />
+               </font>
+            </Text>
+            <Button fx:id="outLogo" layoutX="14.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#logoutLogoClicked" prefHeight="42.0" prefWidth="39.0" style="-fx-background-color: #FFFFFF;">
+               <graphic>
+                  <ImageView accessibleRole="BUTTON" fitHeight="71.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="file:/C:/Users/Oğulcan/IdeaProjects/180501045_OgulcanYildirim/MainDemo/src/main/java/com/company/maindemo/img/logoutLogo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="AnchorPaneAdminStudent" layoutX="206.0" prefHeight="500.0" prefWidth="595.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 25;">
+         <children>
+            <AnchorPane fx:id="studentinfoAnchorPane" prefHeight="500.0" prefWidth="595.0" visible="false">
+               <children>
+                  <TextField fx:id="ausweisIDTextF" editable="false" layoutX="95.0" layoutY="62.0" prefHeight="16.0" prefWidth="149.0" />
+                  <TextField fx:id="nameTextF" layoutX="95.0" layoutY="102.0" prefHeight="16.0" prefWidth="149.0" />
+                  <TextField fx:id="nachnameTextF" layoutX="95.0" layoutY="143.0" prefHeight="16.0" prefWidth="149.0" />
+                  <ChoiceBox fx:id="geschlechtChoiceBox" layoutX="95.0" layoutY="183.0" prefWidth="150.0" />
+                  <DatePicker fx:id="geburtsDatumPick" layoutX="95.0" layoutY="224.0" prefHeight="25.0" prefWidth="150.0" />
+                  <TextField fx:id="handyTextF" layoutX="95.0" layoutY="264.0" prefHeight="16.0" prefWidth="149.0" />
+                  <TextField fx:id="emailTextF" layoutX="95.0" layoutY="305.0" prefHeight="16.0" prefWidth="149.0" />
+                  <TextField fx:id="adresseTextF" layoutX="95.0" layoutY="344.0" prefHeight="111.0" prefWidth="150.0" />
+                  <TextField fx:id="lehrerIDTextF" editable="false" layoutX="365.0" layoutY="62.0" prefHeight="25.0" prefWidth="203.0" promptText="Bitte Klicken Sie Generate" />
+                  <TextField fx:id="passwordTextF" layoutX="365.0" layoutY="102.0" prefHeight="25.0" prefWidth="203.0" promptText="Bitte Klicken Sie Generate" />
+                  <Text layoutX="7.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ausweis ID" textAlignment="JUSTIFY" wrappingWidth="78.990234375" />
+                  <Text layoutX="7.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" textAlignment="JUSTIFY" wrappingWidth="78.990234375" />
+                  <Text layoutX="7.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nachname" wrappingWidth="78.990234375" />
+                  <Text layoutX="7.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Geschlecht" wrappingWidth="78.990234375" />
+                  <Text layoutX="7.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Geburtsdatum" wrappingWidth="78.990234375" />
+                  <Text layoutX="7.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-Mail Adresse" wrappingWidth="78.990234375" />
+                  <Text layoutX="281.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrer ID" wrappingWidth="78.990234375" />
+                  <Text layoutX="281.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="78.990234375" />
+                  <Text layoutX="7.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" wrappingWidth="78.990234375" />
+                  <Label layoutX="71.0" layoutY="14.0" text="Lehrer Anmeldeformular">
+                     <font>
+                        <Font name="Arial Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="abkurzungChoicebox" layoutX="392.0" layoutY="264.0" prefWidth="150.0" />
+                  <TextField fx:id="fachgebietTextF" editable="false" layoutX="392.0" layoutY="305.0" prefHeight="16.0" prefWidth="149.0" />
+                  <TextField fx:id="kapazitatTextF" editable="false" layoutX="392.0" layoutY="344.0" prefHeight="16.0" prefWidth="149.0" />
+                  <Text layoutX="261.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fachgebiet" textAlignment="JUSTIFY" />
+                  <Text layoutX="264.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ECTS" />
+                  <Text layoutX="259.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Abkürzung von Fach" textAlignment="JUSTIFY" wrappingWidth="109.990234375" />
+                  <Label layoutX="259.0" layoutY="226.0" prefHeight="21.0" prefWidth="180.0" text="Fach Informationen">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Text layoutX="7.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Handynummer" textAlignment="JUSTIFY" />
+                  <Button fx:id="aktualisierenButton" layoutX="420.0" layoutY="387.0" mnemonicParsing="false" onMouseClicked="#aktualisierenButtonClicked" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #4E586E; -fx-background-radius: 25;" text="Aktualisieren" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="studentHausaufgabeAnchorPane" prefHeight="500.0" prefWidth="595.0" visible="false">
+               <children>
+                  <Button fx:id="aufgabenSucheButton" layoutX="200.0" layoutY="30.0" mnemonicParsing="false" onMouseClicked="#aufgabenSucheButtonClicked" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #f08375; -fx-background-radius: 100;" text="Suche" />
+                  <ChoiceBox fx:id="hausaufgabeIDChoicebox" layoutX="23.0" layoutY="30.0" prefWidth="150.0" />
+                  <TextArea fx:id="AufgabeinfoTextArea" editable="false" layoutX="298.0" layoutY="75.0" prefHeight="349.0" prefWidth="258.0" promptText="Information für Hausaufgabe" scrollTop="1.0" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextArea>
+                  <TextField fx:id="hausaufgabeIDTextField" layoutX="127.0" layoutY="100.0" />
+                  <TextField fx:id="UnterrichtIDTextField" layoutX="127.0" layoutY="150.0" />
+                  <TextField fx:id="LehrerIDTextField" layoutX="127.0" layoutY="200.0" />
+                  <DatePicker fx:id="abgabedatumDatepicker" editable="false" layoutX="127.0" layoutY="250.0" prefHeight="25.0" prefWidth="149.0" />
+                  <Label layoutX="30.0" layoutY="104.0" text="Hausaufgabe ID" />
+                  <Label layoutX="30.0" layoutY="154.0" text="Unterricht ID" />
+                  <Label layoutX="30.0" layoutY="204.0" text="Lehrer ID" />
+                  <Label layoutX="32.0" layoutY="254.0" text="Abgabedatum" />
+                  <Button fx:id="aufgabenSucheButton1" layoutX="127.0" layoutY="290.0" mnemonicParsing="false" onMouseClicked="#aufgabenSucheButtonClicked" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #f08375; -fx-background-radius: 100;" text="Speichern" />
+                  <Button fx:id="aufgabenSucheButton11" layoutX="210.0" layoutY="290.0" mnemonicParsing="false" onMouseClicked="#aufgabenSucheButtonClicked" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #f08375; -fx-background-radius: 100;" text="Löschen" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="studentAnmeldenAnchorPane" prefHeight="500.0" prefWidth="595.0" visible="false">
+               <children>
+                  <SplitPane fx:id="auflistenSplitPane" dividerPositions="0.1" focusTraversable="false" layoutX="18.0" layoutY="15.0" orientation="VERTICAL" prefHeight="470.0" prefWidth="560.0" style="-fx-background-radius: 25;">
+                     <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="88.0" prefWidth="559.0">
+                           <children>
+                              <Button fx:id="listenButton" layoutX="475.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-radius: 25;" text="AUFLISTEN" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-radius: 25;">
+                           <children>
+                              <TableView fx:id="lehrerTableview" prefHeight="425.0" prefWidth="558.0" style="-fx-background-radius: 25;">
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <columns>
+                                    <TableColumn fx:id="col_UID" editable="false" prefWidth="75.0" text="Student ID" />
+                                    <TableColumn fx:id="col_UNAME" editable="false" prefWidth="69.0" text="Nachname" />
+                                    <TableColumn fx:id="col_ects" editable="false" prefWidth="62.0" text="Nachname" />
+                                    <TableColumn fx:id="col_lehrerID" editable="false" prefWidth="123.0" text="Mail" />
+                                    <TableColumn fx:id="col_lehrername" editable="false" prefWidth="12.0" sortable="false" text="Handy" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
    </children>
 </AnchorPane>

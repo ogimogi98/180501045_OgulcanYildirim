@@ -170,7 +170,16 @@ public class HelloController{
 
                     if (retrievetUser.equals(ıdText.getText()) && retrievedPass.equals(passText.getText()) ){
 
-                        prMethods.changeScene("teacherPage.fxml",loginButton);
+                        String username = ıdText.getText();
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("teacherPage.fxml"));
+                        Parent root = loader.load();
+                        teacherController teacherController = loader.getController();
+                        teacherController.helloMessage(username);
+
+                        Stage window = (Stage) loginButton.getScene().getWindow();
+                        Scene scene = new Scene(root);
+                        window.setScene(scene);
+                        window.show();
 
                     }
                     else   {

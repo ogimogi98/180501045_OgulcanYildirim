@@ -7,12 +7,13 @@ import java.io.IOException;
 
 public class adminPageController {
 
-    @FXML
-    Button outLogo;
+
     @FXML
     Button studentButton;
     @FXML
     Button lehrerButton;
+    @FXML
+    Button unterrichtButton;
 
     @FXML
     protected void studentClicked() throws IOException {
@@ -27,12 +28,15 @@ public class adminPageController {
         prMethods.changeScene("adminTeacherPage.fxml",lehrerButton);
 
     }
-    protected void unterrichtClicked(){
+    @FXML
+    protected void unterrichtButtonClicked() throws IOException{
 
-
+        prMethods.changeScene("adminUnterrichtPage.fxml",unterrichtButton);
 
 
     }
+    @FXML
+    Button outLogo;
     @FXML
     protected void logoutLogoClicked() throws IOException {
 

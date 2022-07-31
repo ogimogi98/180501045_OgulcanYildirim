@@ -42,6 +42,15 @@
                </font>
             </Text>
             <TextArea fx:id="infoTextArea" editable="false" layoutX="32.0" layoutY="250.0" prefHeight="82.0" prefWidth="143.0" style="-fx-background-color: #f08375;" wrapText="true" />
+            <Button fx:id="outLogo" layoutX="14.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#logoutLogoClicked" prefHeight="42.0" prefWidth="39.0" style="-fx-background-color: #FFFFFF;">
+               <graphic>
+                  <ImageView accessibleRole="BUTTON" fitHeight="71.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="file:/C:/Users/Oğulcan/IdeaProjects/180501045_OgulcanYildirim/MainDemo/src/main/java/com/company/maindemo/img/logoutLogo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="AnchorPaneAdminStudent" layoutX="206.0" prefHeight="500.0" prefWidth="595.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 25;">

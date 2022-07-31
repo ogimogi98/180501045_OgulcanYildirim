@@ -5,11 +5,17 @@ public class Unterricht {
     private String UnterrichtID;
     private String unterrichtName;
     private String unterrichtInfo;
-    private int lehrerID;
-    private int studentID;
+    private String modul;
 
 
-    public Unterricht() {
+
+    public Unterricht(String UnterrichtID,String unterrichtName,String unterrichtInfo,String modul) {
+
+        this.UnterrichtID=UnterrichtID;
+        this.unterrichtName=unterrichtName;
+        this.unterrichtInfo=unterrichtInfo;
+        this.setModul(modul);
+
     }
 
 
@@ -37,19 +43,11 @@ public class Unterricht {
         this.unterrichtInfo = unterrichtInfo;
     }
 
-    public int getLehrerID() {
-        return lehrerID;
+    public String getModul() {
+        return modul;
     }
 
-    public void setLehrerID(int lehrerID) {
-        this.lehrerID = lehrerID;
-    }
-
-    public int getStudentID() {
-        return studentID;
-    }
-
-    public void setStudentID(int studentID) {
-        this.studentID = studentID;
+    public void setModul(String modul) {
+        this.modul = modul;
     }
 }

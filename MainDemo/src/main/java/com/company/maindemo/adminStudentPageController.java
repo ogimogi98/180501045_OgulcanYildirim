@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -315,6 +316,16 @@ public class adminStudentPageController {
 
         prMethods.updateStudent(aktualisierteStudent);
         infoTextArea.setText("Studenten wird aktualisiert.");
+
+    }
+    @FXML
+    Button outLogo;
+    @FXML
+    protected void logoutLogoClicked() throws IOException {
+
+        System.out.println("logo Clicked");
+
+        prMethods.changeScene("adminPage.fxml",outLogo);
 
     }
 
